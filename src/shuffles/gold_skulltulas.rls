@@ -211,6 +211,50 @@ extend region RR_ICE_CAVERN_MQ_COMPASS_ROOM {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_HOLES_BASEMENT {
+    locations {
+        RC_JABU_JABUS_BELLY_GS_LOBBY_BASEMENT_LOWER: hookshot_or_boomerang()
+        RC_JABU_JABUS_BELLY_GS_LOBBY_BASEMENT_UPPER: hookshot_or_boomerang()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_NORTH {
+    locations {
+        RC_JABU_JABUS_BELLY_GS_WATER_SWITCH_ROOM: can_get_drop(RE_GOLD_SKULLTULA, ED_BOOMERANG)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH {
+    locations {
+        RC_JABU_JABUS_BELLY_GS_WATER_SWITCH_ROOM: can_get_drop(RE_GOLD_SKULLTULA, ED_BOOMERANG)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_LEDGE {
+    locations {
+        # this is for climbing back and forth to use pots (or ruto) to kill skull...
+        RC_JABU_JABUS_BELLY_GS_WATER_SWITCH_ROOM: has(RG_POWER_BRACELET) and (has(RG_BRONZE_SCALE) or (is_adult() and can_use(RG_HOVER_BOOTS))) or
+                                                  # or killing the skull before climbing to grab the token
+                                                  can_kill(RE_GOLD_SKULLTULA, ED_BOMB_THROW)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_BIGOCTO_LEDGE {
+    locations {
+        # Only adult can get the token without assistance
+        RC_JABU_JABUS_BELLY_GS_LOBBY_BASEMENT_UPPER: is_adult() and can_get_drop(RE_GOLD_SKULLTULA, ED_SHORT_JUMPSLASH)
+        # You can get the LOWER skull token from here as adult with hovers backwalk and a backflip, but it's trickworthy and not relevant unless you can beat tentacles without rang
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_NEAR_BOSS_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_GS_NEAR_BOSS: can_kill(RE_GOLD_SKULLTULA, ED_BOMB_THROW) and (has(RG_CLIMB) or hookshot_or_boomerang())
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_RUPEE_BRIDGE_NORTH {

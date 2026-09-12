@@ -1,0 +1,287 @@
+region RR_JABU_JABUS_BELLY_BEGINNING {
+    name: "Jabu Jabus Belly Beginning"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_ENTRYWAY:  always
+        RR_JABU_JABUS_BELLY_LIFT_ROOM: can_use_projectile()
+    }
+}
+
+region RR_JABU_JABUS_BELLY_LIFT_ROOM {
+    name: "Jabu Jabus Belly Lift Room"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_BEGINNING:               always
+        RR_JABU_JABUS_BELLY_HOLES_ROOM:              always
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH: always
+        RR_JABU_JABUS_BELLY_NEAR_BOSS_ROOM:          (flag(LOGIC_JABU_LOWERED_PATH) or (trick(RT_JABU_BOSS_HOVER) and can_use(RG_HOVER_BOOTS))) and has(RG_POWER_BRACELET)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_HOLES_ROOM {
+    name: "Jabu Jabus Belly Holes Room"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_LIFT_ROOM:              always
+        RR_JABU_JABUS_BELLY_FORKED_CORRIDOR:        always
+        RR_JABU_JABUS_BELLY_HOLES_LOWER_DOOR_LEDGE: always
+        RR_JABU_JABUS_BELLY_BIGOCTO_LEDGE:          flag(LOGIC_JABU_NORTH_TENTACLE)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_HOLES_BASEMENT {
+    name: "Jabu Jabus Belly Holes Basement"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_HOLES_ROOM:             has(RG_CLIMB)
+        RR_JABU_JABUS_BELLY_B1_JIGGLY:              always
+        RR_JABU_JABUS_BELLY_HOLES_LOWER_DOOR_LEDGE: is_adult()
+    }
+}
+
+region RR_JABU_JABUS_BELLY_HOLES_LOWER_DOOR_LEDGE {
+    name: "Jabu Jabus Belly Holes Lower Door Ledge"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_HOLES_BASEMENT:          always
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_NORTH: always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_B1_JIGGLY {
+    name: "Jabu Jabus Belly B1 Cube"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_FAIRY_ACCESS: can_use(RG_BOOMERANG) or (can_break_pots() and trick(RT_JABU_B1_CUBE_HOVER) and can_use(RG_HOVER_BOOTS))
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_HOLES_BASEMENT: always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_NORTH {
+    name: "Jabu Jabus Belly Water Switch Room North"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_JABU_RUTO_IN_1F: (is_adult() or has(RG_BRONZE_SCALE)) and has(RG_SPEAK_ZORA) and has(RG_POWER_BRACELET)
+    }
+
+    exits {
+        # there's tricks for getting here with bunny-jumps or just side-hops
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_LEDGE: (has(RG_BRONZE_SCALE) or can_use(RG_HOVER_BOOTS)) and has(RG_CLIMB)
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH: is_adult() or has(RG_BRONZE_SCALE)
+        RR_JABU_JABUS_BELLY_HOLES_BASEMENT:          always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH {
+    name: "Jabu Jabus Belly Water Switch Room South"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_NORTH: is_adult() or has(RG_BRONZE_SCALE)
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_LEDGE: (has(RG_BRONZE_SCALE) or can_use(RG_HOVER_BOOTS)) and has(RG_CLIMB)
+        # Adult can barely reach it with BGS, but it's finnicky enough to be a trick, and too niche to be worth adding yet (only relevant in doorsanity)
+        RR_JABU_JABUS_BELLY_LIFT_ROOM:               can_hit_switch(ED_BOMB_THROW)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_LEDGE {
+    name: "Jabu Jabus Belly Water Switch Room Ledge"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_FAIRY_ACCESS: can_break_pots()
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_NORTH: always
+        RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH: always
+        # Assumes RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH access
+        RR_JABU_JABUS_BELLY_LIFT_ROOM:               has(RG_POWER_BRACELET)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_FORKED_CORRIDOR {
+    name: "Jabu Jabus Belly Forked Corridor"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_HOLES_ROOM:         always
+        RR_JABU_JABUS_BELLY_FORK_WEST:          flag(LOGIC_JABU_RUTO_IN_1F)
+        RR_JABU_JABUS_BELLY_TO_FORK_NORTH_WEST: always
+        RR_JABU_JABUS_BELLY_TO_FORK_NORTH:      always
+        RR_JABU_JABUS_BELLY_TO_FORK_NORTH_EAST: always
+        RR_JABU_JABUS_BELLY_FORK_EAST:          flag(LOGIC_JABU_RUTO_IN_1F)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_FORK_WEST {
+    name: "Jabu Jabus Belly Fork West"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_JABU_WEST_TENTACLE: can_kill(RE_TENTACLE, ED_BOOMERANG)
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_FORKED_CORRIDOR: always
+    }
+}
+
+# this handles spawning in tentacle
+region RR_JABU_JABUS_BELLY_TO_FORK_NORTH_WEST {
+    name: "Jabu Jabus Belly To Fork West"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_FORKED_CORRIDOR: flag(LOGIC_JABU_WEST_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_FORK_NORTH_WEST: flag(LOGIC_JABU_WEST_TENTACLE)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_FORK_NORTH_WEST {
+    name: "Jabu Jabus Belly Fork North West"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_TO_FORK_NORTH_WEST: any_age(can_kill(RE_SHABOM, ED_CLOSE, false, 9))
+    }
+}
+
+# this handles spawning in tentacle
+region RR_JABU_JABUS_BELLY_TO_FORK_NORTH {
+    name: "Jabu Jabus Belly To Fork North"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_FORKED_CORRIDOR: flag(LOGIC_JABU_EAST_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_FORK_NORTH:      flag(LOGIC_JABU_EAST_TENTACLE)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_FORK_NORTH {
+    name: "Jabu Jabus Belly Fork North"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_JABU_NORTH_TENTACLE: can_kill(RE_TENTACLE, ED_BOOMERANG)
+    }
+
+    exits {
+        # implied can_kill(RE_BARI)
+        RR_JABU_JABUS_BELLY_TO_FORK_NORTH: flag(LOGIC_JABU_NORTH_TENTACLE)
+    }
+}
+
+# this handles spawning in tentacle
+region RR_JABU_JABUS_BELLY_TO_FORK_NORTH_EAST {
+    name: "Jabu Jabus Belly MQ To Fork West"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_FORKED_CORRIDOR: flag(LOGIC_JABU_WEST_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_FORK_NORTH_EAST: flag(LOGIC_JABU_WEST_TENTACLE)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_FORK_NORTH_EAST {
+    name: "Jabu Jabus Belly Fork North East"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_JABU_EAST_TENTACLE: can_kill(RE_TENTACLE, ED_BOOMERANG)
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_TO_FORK_NORTH_EAST: flag(LOGIC_JABU_EAST_TENTACLE)
+    }
+}
+
+region RR_JABU_JABUS_BELLY_FORK_EAST {
+    name: "Jabu Jabus Belly Fork East"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_FORKED_CORRIDOR: always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_BIGOCTO_LEDGE {
+    name: "Jabu Jabus Belly Big Octo Ledge"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_HOLES_BASEMENT: always
+        RR_JABU_JABUS_BELLY_BIGOCTO:        flag(LOGIC_JABU_RUTO_IN_1F) and any_age(can_kill(RE_BIG_OCTO))
+    }
+}
+
+region RR_JABU_JABUS_BELLY_BIGOCTO {
+    name: "Jabu Jabus Belly Big Octo"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_BIGOCTO_LEDGE: flag(LOGIC_JABU_RUTO_IN_1F) and any_age(can_kill(RE_BIG_OCTO))
+        RR_JABU_JABUS_BELLY_ABOVE_BIGOCTO: flag(LOGIC_JABU_RUTO_IN_1F) and any_age(can_kill(RE_BIG_OCTO))
+    }
+}
+
+region RR_JABU_JABUS_BELLY_ABOVE_BIGOCTO {
+    name: "Jabu Jabus Belly Above Big Octo"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_FAIRY_ACCESS: can_break_pots()
+        LOGIC_NUT_ACCESS:   can_break_pots()
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_BIGOCTO:       take_damage()
+        RR_JABU_JABUS_BELLY_JIGGLIES_ROOM: always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_JIGGLIES_ROOM {
+    name: "Jabu Jabus Belly Jigglies Room"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_ABOVE_BIGOCTO: always
+        RR_JABU_JABUS_BELLY_LIFT_UPPER:    can_use(RG_BOOMERANG) or (is_adult() and can_ground_jump())
+    }
+}
+
+region RR_JABU_JABUS_BELLY_LIFT_UPPER {
+    name: "Jabu Jabus Belly Lift Upper"
+    scene: SCENE_JABU_JABU
+
+    events {
+        LOGIC_JABU_LOWERED_PATH: always
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_LIFT_ROOM:     always
+        RR_JABU_JABUS_BELLY_JIGGLIES_ROOM: always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_NEAR_BOSS_ROOM {
+    name: "Jabu Jabus Belly Near Boss Room"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_LIFT_ROOM: always
+        RR_JABU_JABUS_BELLY_BOSS_ENTRYWAY: (has(RG_CLIMB) and can_use(RG_BOOMERANG)) or
+                                           (trick(RT_JABU_NEAR_BOSS_RANGED) and (can_use(has(RG_CLIMB) ? RG_HOOKSHOT : RG_LONGSHOT) or can_use(RG_FAIRY_BOW) or can_use(RG_FAIRY_SLINGSHOT))) or
+                                           (trick(RT_JABU_NEAR_BOSS_EXPLOSIVES) and (can_use(RG_BOMBCHU_5) or (can_use(RG_HOVER_BOOTS) and can_use(RG_BOMB_BAG) and has(RG_CLIMB))))
+    }
+}

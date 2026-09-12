@@ -419,6 +419,45 @@ extend region RR_ICE_CAVERN_MQ_COMPASS_ROOM {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_BOSS_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_BARINADE_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_BARINADE_POT_2: can_break_pots()
+        RC_JABU_JABUS_BELLY_BARINADE_POT_3: can_break_pots()
+        RC_JABU_JABUS_BELLY_BARINADE_POT_4: can_break_pots()
+        RC_JABU_JABUS_BELLY_BARINADE_POT_5: can_break_pots()
+        RC_JABU_JABUS_BELLY_BARINADE_POT_6: can_break_pots()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_B1_JIGGLY {
+    locations {
+        RC_JABU_JABUS_BELLY_TWO_OCTOROK_POT_1: can_use(RG_BOOMERANG) or (can_break_pots() and trick(RT_JABU_B1_CUBE_HOVER) and can_use(RG_HOVER_BOOTS))
+        RC_JABU_JABUS_BELLY_TWO_OCTOROK_POT_2: can_use(RG_BOOMERANG) or (can_break_pots() and trick(RT_JABU_B1_CUBE_HOVER) and can_use(RG_HOVER_BOOTS))
+        RC_JABU_JABUS_BELLY_TWO_OCTOROK_POT_3: can_use(RG_BOOMERANG) or (can_break_pots() and trick(RT_JABU_B1_CUBE_HOVER) and can_use(RG_HOVER_BOOTS))
+        RC_JABU_JABUS_BELLY_TWO_OCTOROK_POT_4: can_use(RG_BOOMERANG) or (can_break_pots() and trick(RT_JABU_B1_CUBE_HOVER) and can_use(RG_HOVER_BOOTS))
+        RC_JABU_JABUS_BELLY_TWO_OCTOROK_POT_5: can_use(RG_BOOMERANG) or (can_break_pots() and trick(RT_JABU_B1_CUBE_HOVER) and can_use(RG_HOVER_BOOTS))
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_LEDGE {
+    locations {
+        RC_JABU_JABUS_BELLY_BASEMENT_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_BASEMENT_POT_2: can_break_pots()
+        RC_JABU_JABUS_BELLY_BASEMENT_POT_3: can_break_pots()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_ABOVE_BIGOCTO {
+    locations {
+        RC_JABU_JABUS_BELLY_ABOVE_BIG_OCTO_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_ABOVE_BIG_OCTO_POT_2: can_break_pots()
+        RC_JABU_JABUS_BELLY_ABOVE_BIG_OCTO_POT_3: can_break_pots()
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_FOYER {

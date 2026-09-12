@@ -381,6 +381,28 @@ extend region RR_ICE_CAVERN_MQ_STALFOS_ROOM {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_FORK_WEST {
+    locations {
+        RC_JABU_JABUS_BELLY_MAP_CHEST: flag(LOGIC_JABU_WEST_TENTACLE) and has(RG_OPEN_CHEST)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_FORK_NORTH_WEST {
+    locations {
+        # ruto could theoretically clear this room, but it's hard because of the timer and she doesn't appear with you when you respawn after failing, which would force a savewarp
+        RC_JABU_JABUS_BELLY_COMPASS_CHEST: can_kill(RE_SHABOM, ED_CLOSE, false, 9) and has(RG_OPEN_CHEST)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_FORK_EAST {
+    locations {
+        # We can kill the Stingers with ruto
+        RC_JABU_JABUS_BELLY_BOOMERANG_CHEST: (flag(LOGIC_JABU_RUTO_IN_1F) or can_kill(RE_STINGER, ED_CLOSE, true, 4)) and has(RG_OPEN_CHEST)
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_SWITCH_BRIDGE_NORTH {

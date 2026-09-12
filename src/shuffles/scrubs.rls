@@ -67,6 +67,14 @@ extend region RR_GANONS_CASTLE_MQ_DEKU_SCRUBS {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_LIFT_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_DEKU_SCRUB: has(RG_BRONZE_SCALE) and (is_child() or has(RG_SILVER_SCALE) or trick(RT_UNINTUITIVE_JUMPS) or can_use(RG_IRON_BOOTS)) and has(RG_SPEAK_DEKU) and check_price() <= wallet_capacity()
+    }
+}
+
 # overworld/death_mountain_crater
 
 extend region RR_DMC_SCRUB {

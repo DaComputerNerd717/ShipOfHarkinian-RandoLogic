@@ -1,0 +1,48 @@
+region RR_JABU_JABUS_BELLY_ENTRYWAY {
+    name: "Jabu Jabus Belly Entryway"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_BEGINNING:    is_vanilla()
+        RR_JABU_JABUS_BELLY_MQ_BEGINNING: is_mq()
+        RR_ZORAS_FOUNTAIN:                always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_BOSS_ENTRYWAY {
+    name: "Jabu Jabus Belly Boss Entryway"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_BOSS_ROOM: always
+    }
+}
+
+region RR_JABU_JABUS_BELLY_BOSS_EXIT {
+    name: "Jabu Jabus Belly Boss Exit"
+    scene: SCENE_JABU_JABU
+
+    exits {
+        RR_JABU_JABUS_BELLY_NEAR_BOSS_ROOM:    is_vanilla()
+        RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM: is_mq()
+    }
+}
+
+region RR_JABU_JABUS_BELLY_BOSS_ROOM {
+    name: "Jabu Jabus Belly Boss Room"
+    scene: SCENE_JABU_JABU_BOSS
+
+    events {
+        LOGIC_JABU_JABUS_BELLY_CLEAR: can_kill(RE_BARINADE)
+    }
+
+    locations {
+        RC_JABU_JABUS_BELLY_BARINADE_HEART: flag(LOGIC_JABU_JABUS_BELLY_CLEAR)
+        RC_BARINADE:                        flag(LOGIC_JABU_JABUS_BELLY_CLEAR)
+    }
+
+    exits {
+        RR_JABU_JABUS_BELLY_BOSS_EXIT: never
+        RR_ZORAS_FOUNTAIN:             flag(LOGIC_JABU_JABUS_BELLY_CLEAR)
+    }
+}

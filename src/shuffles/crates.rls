@@ -62,6 +62,15 @@ extend region RR_DODONGOS_CAVERN_MQ_POES_ROOM {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_LIFT_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_PLATFORM_ROOM_SMALL_CRATE_1: can_break_small_crates()
+        RC_JABU_JABUS_BELLY_PLATFORM_ROOM_SMALL_CRATE_2: can_break_small_crates()
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_CHILD_BOXES {
