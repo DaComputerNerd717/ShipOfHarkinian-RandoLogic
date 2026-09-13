@@ -3,21 +3,12 @@ region RR_JABU_JABUS_BELLY_MQ_BEGINNING {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_NUT_ACCESS: never#TODO
-    }
-
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_MAP_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_FIRST_ROOM_SIDE_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_ENTRANCE_POT_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_ENTRANCE_POT_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_FIRST_GRASS_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_FIRST_GRASS_2: never#TODO
+        LOGIC_NUT_ACCESS: can_break_pots()
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_ENTRYWAY: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_ENTRYWAY:     always
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: any_age(can_use(RG_FAIRY_SLINGSHOT))
     }
 }
 
@@ -26,24 +17,15 @@ region RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_MQ_LIFT_ROOM_COW: never#TODO
-    }
-
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_SECOND_ROOM_LOWER_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_HEART_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_HEART_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_3: never#TODO
+        LOGIC_JABU_MQ_LIFT_ROOM_COW: can_use(RG_FAIRY_SLINGSHOT)
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_BEGINNING: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_UNDERWATER_ALCOVE: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM_EAST_LEDGE: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM_PAST_GEYSER: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_BEGINNING:                     always
+        RR_JABU_JABUS_BELLY_MQ_UNDERWATER_ALCOVE:             has(RG_SILVER_SCALE) or (has(RG_BRONZE_SCALE) and (is_child() or can_use(RG_IRON_BOOTS) or trick(RT_UNINTUITIVE_JUMPS)))
+        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM:                    flag(LOGIC_JABU_MQ_HOLES_ROOM_DOOR)
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM_EAST_LEDGE:          flag(LOGIC_JABU_LOWERED_PATH) or can_use(RG_HOVER_BOOTS) or (can_use(RG_HOOKSHOT) and flag(LOGIC_JABU_MQ_LIFT_ROOM_COW))
+        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM_PAST_GEYSER: flag(LOGIC_JABU_MQ_WATER_SWITCH_LIFT_ACCESS)
     }
 }
 
@@ -52,20 +34,11 @@ region RR_JABU_JABUS_BELLY_MQ_UNDERWATER_ALCOVE {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_MQ_HOLES_ROOM_DOOR: never#TODO
-    }
-
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_COMPASS_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_GEYSER_POT_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_GEYSER_POT_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_3: never#TODO
+        LOGIC_JABU_MQ_HOLES_ROOM_DOOR: always
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: has(RG_BRONZE_SCALE)
     }
 }
 
@@ -74,18 +47,13 @@ region RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_MQ_FORKED_ROOM_DOOR: never#TODO
-    }
-
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_PIT_GRASS_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_PIT_GRASS_2: never#TODO
+        LOGIC_JABU_MQ_FORKED_ROOM_DOOR: (has_explosives() or trick(RT_DISTANT_BOULDER_COLLISION)) and can_use(RG_FAIRY_SLINGSHOT)
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM_PAST_JIGGLY: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM:              always
+        RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT:         always
+        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM_PAST_JIGGLY: can_use(RG_BOOMERANG)
     }
 }
 
@@ -94,8 +62,9 @@ region RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM_PAST_JIGGLY {
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: can_use(RG_BOOMERANG)
+        # It is possible to open the door here without crossing the jiggly using RT_DISTANT_BOULDER and good timing
+        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: flag(LOGIC_JABU_MQ_FORKED_ROOM_DOOR)
     }
 }
 
@@ -103,19 +72,11 @@ region RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT {
     name: "Jabu Jabus Belly MQ Holes Basement"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_BASEMENT_NEAR_VINES_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BASEMENT_NEAR_SWITCHES_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BASEMENT_GRASS_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BASEMENT_GRASS_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BASEMENT_GRASS_3: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_TO_BIGOCTO: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_INVISIBLE_KEESE_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: has(RG_CLIMB)
+        RR_JABU_JABUS_BELLY_MQ_TO_BIGOCTO: flag(LOGIC_JABU_WEST_TENTACLE)
+        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM: has(RG_SPEAK_ZORA) and has(RG_POWER_BRACELET)
+        RR_JABU_JABUS_BELLY_MQ_INVISIBLE_KEESE_ROOM: flag(LOGIC_JABU_NORTH_TENTACLE)
     }
 }
 
@@ -124,21 +85,13 @@ region RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_MQ_WATER_SWITCH_LIFT_ACCESS: never#TODO
-    }
-
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_BOOMERANG_ROOM_SMALL_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BOOMERANG_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_GS_BOOMERANG_CHEST_ROOM: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_TIME_BLOCK_POT_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_TIME_BLOCK_POT_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BASEMENT_BOOMERANG_GRASS: never#TODO
+        LOGIC_JABU_MQ_WATER_SWITCH_LIFT_ACCESS: can_kill(RE_LIZALFOS)
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM_PAST_GEYSER: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: never#TODO
+        # without swim, jump from rang chest to the other side
+        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM_PAST_GEYSER: any_age(can_kill(RE_LIZALFOS))
+        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: (is_adult() or has(RG_BRONZE_SCALE)) and any_age(can_kill(RE_LIZALFOS))
     }
 }
 
@@ -147,8 +100,8 @@ region RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM_PAST_GEYSER {
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM: flag(LOGIC_JABU_MQ_WATER_SWITCH_LIFT_ACCESS)
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: always
     }
 }
 
@@ -157,22 +110,24 @@ region RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR {
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_TO_FORK_WEST: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH_WEST: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_EAST: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_FORK_EAST: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM: can_use(RG_BOOMERANG)
+        # If some mode lets an age use sticks and not sling, and other use sling and not sticks, this needs changing
+        RR_JABU_JABUS_BELLY_MQ_TO_FORK_WEST: always
+        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH_WEST: always
+        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH: blast_or_smash() and has(RG_POWER_BRACELET)
+        RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_EAST: always
+        RR_JABU_JABUS_BELLY_MQ_FORK_EAST: any_age(can_use(RG_FAIRY_SLINGSHOT) and can_use(RG_STICKS)) or any_age(has_fire_source())
     }
 }
 
+# this handles spawning in tentacle
 region RR_JABU_JABUS_BELLY_MQ_TO_FORK_WEST {
     name: "Jabu Jabus Belly MQ To Fork West"
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_FORK_WEST: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: flag(LOGIC_JABU_EAST_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_MQ_FORK_WEST: flag(LOGIC_JABU_EAST_TENTACLE)
     }
 }
 
@@ -181,21 +136,22 @@ region RR_JABU_JABUS_BELLY_MQ_FORK_WEST {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_WEST_TENTACLE: never#TODO
+        LOGIC_JABU_WEST_TENTACLE: can_kill(RE_TENTACLE, ED_BOOMERANG)
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_TO_FORK_WEST: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_TO_FORK_WEST: always
     }
 }
 
+# this handles spawning in tentacle
 region RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH_WEST {
     name: "Jabu Jabus Belly MQ To Fork North West"
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_WEST: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: flag(LOGIC_JABU_EAST_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_WEST: flag(LOGIC_JABU_EAST_TENTACLE)
     }
 }
 
@@ -203,12 +159,8 @@ region RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_WEST {
     name: "Jabu Jabus Belly MQ Fork North West"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_GS_TAILPASARAN_ROOM: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH_WEST: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH_WEST: always
     }
 }
 
@@ -217,8 +169,8 @@ region RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH {
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_FORK_NORTH: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: blast_or_smash()
+        RR_JABU_JABUS_BELLY_MQ_FORK_NORTH:      blast_or_smash() and has(RG_POWER_BRACELET)
     }
 }
 
@@ -227,11 +179,11 @@ region RR_JABU_JABUS_BELLY_MQ_FORK_NORTH {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_NORTH_TENTACLE: never#TODO
+        LOGIC_JABU_NORTH_TENTACLE: can_use(RG_BOOMERANG)
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_TO_FORK_NORTH: always
     }
 }
 
@@ -239,17 +191,8 @@ region RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_EAST {
     name: "Jabu Jabus Belly MQ Fork North East"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_FALLING_LIKE_LIKE_ROOM_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIKE_LIKES_POT_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_LIKE_LIKES_POT_2: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_FALLING_LIKE_LIKE_GRASS: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_TRIPLE_HALLWAY_SMALL_CRATE_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_TRIPLE_HALLWAY_SMALL_CRATE_2: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: always
     }
 }
 
@@ -258,11 +201,11 @@ region RR_JABU_JABUS_BELLY_MQ_FORK_EAST {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_EAST_TENTACLE: never#TODO
+        LOGIC_JABU_EAST_TENTACLE: can_kill(RE_TENTACLE, ED_BOOMERANG)
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_FORKED_CORRIDOR: always
     }
 }
 
@@ -270,32 +213,30 @@ region RR_JABU_JABUS_BELLY_MQ_INVISIBLE_KEESE_ROOM {
     name: "Jabu Jabus Belly MQ Invisible Keese Room"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_GS_INVISIBLE_ENEMIES_ROOM: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT: (flag(LOGIC_JABU_NORTH_TENTACLE) or take_damage()) and has(RG_BRONZE_SCALE)
     }
 }
 
+# unlike other entrances behind tentacles, Link spawns behind the tentacle. Running into it throws him into main room still
 region RR_JABU_JABUS_BELLY_MQ_TO_BIGOCTO {
     name: "Jabu Jabus Belly MQ To Big Octo"
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_BIGOCTO: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT: flag(LOGIC_JABU_WEST_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_MQ_BIGOCTO:        always
     }
 }
 
+# Need Ruto here
 region RR_JABU_JABUS_BELLY_MQ_BIGOCTO {
     name: "Jabu Jabus Belly MQ Big Octo"
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_TO_BIGOCTO: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_ABOVE_BIGOCTO: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_TO_BIGOCTO:    any_age(has(RG_SPEAK_ZORA) and has(RG_POWER_BRACELET) and can_kill(RE_BIG_OCTO))
+        RR_JABU_JABUS_BELLY_MQ_ABOVE_BIGOCTO: any_age(has(RG_SPEAK_ZORA) and has(RG_POWER_BRACELET) and can_kill(RE_BIG_OCTO))
     }
 }
 
@@ -303,14 +244,9 @@ region RR_JABU_JABUS_BELLY_MQ_ABOVE_BIGOCTO {
     name: "Jabu Jabus Belly MQ Above Big Octo"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_AFTER_BIG_OCTO_GRASS_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_AFTER_BIG_OCTO_GRASS_2: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_BIGOCTO: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM: always
+        RR_JABU_JABUS_BELLY_MQ_BIGOCTO:       take_damage() and any_age(can_kill(RE_BIG_OCTO))
     }
 }
 
@@ -318,16 +254,9 @@ region RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM {
     name: "Jabu Jabus Belly MQ Cubes Room"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_COW: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_JIGGLIES_GRASS: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_JIGGLIES_SMALL_CRATE_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_JIGGLIES_SMALL_CRATE_2: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_ABOVE_BIGOCTO: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_ABOVE_LIFT_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_ABOVE_BIGOCTO:   always
+        RR_JABU_JABUS_BELLY_MQ_ABOVE_LIFT_ROOM: can_use(RG_BOOMERANG) and can_use(RG_FAIRY_SLINGSHOT) and has(RG_POWER_BRACELET)
     }
 }
 
@@ -336,12 +265,12 @@ region RR_JABU_JABUS_BELLY_MQ_ABOVE_LIFT_ROOM {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_JABU_LOWERED_PATH: never#TODO
+        LOGIC_JABU_LOWERED_PATH: always
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM: always
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM:     always
     }
 }
 
@@ -349,23 +278,20 @@ region RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM_EAST_LEDGE {
     name: "Jabu Jabus Belly MQ Lift Room East Ledge"
     scene: SCENE_JABU_JABU
 
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_SECOND_ROOM_UPPER_CHEST: never#TODO
-    }
-
     exits {
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_TO_NEAR_BOSS_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM:         always
+        RR_JABU_JABUS_BELLY_MQ_TO_NEAR_BOSS_ROOM: always
     }
 }
 
+# this handles spawning in tentacle
 region RR_JABU_JABUS_BELLY_MQ_TO_NEAR_BOSS_ROOM {
     name: "Jabu Jabus Belly MQ To Near Boss Room"
     scene: SCENE_JABU_JABU
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM_EAST_LEDGE: never#TODO
-        RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM_EAST_LEDGE: flag(LOGIC_JABU_NORTH_TENTACLE) or take_damage()
+        RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM:       flag(LOGIC_JABU_NORTH_TENTACLE)
     }
 }
 
@@ -374,19 +300,11 @@ region RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM {
     scene: SCENE_JABU_JABU
 
     events {
-        LOGIC_FAIRY_ACCESS: never#TODO
-    }
-
-    locations {
-        RC_JABU_JABUS_BELLY_MQ_NEAR_BOSS_CHEST: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_GS_NEAR_BOSS: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BEFORE_BOSS_POT_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BEFORE_BOSS_GRASS_1: never#TODO
-        RC_JABU_JABUS_BELLY_MQ_BEFORE_BOSS_GRASS_2: never#TODO
+        LOGIC_FAIRY_ACCESS: can_break_pots()
     }
 
     exits {
-        RR_JABU_JABUS_BELLY_MQ_TO_NEAR_BOSS_ROOM: never#TODO
-        RR_JABU_JABUS_BELLY_BOSS_ENTRYWAY: never#TODO
+        RR_JABU_JABUS_BELLY_MQ_TO_NEAR_BOSS_ROOM: always
+        RR_JABU_JABUS_BELLY_BOSS_ENTRYWAY:        any_age(can_use(RG_FAIRY_SLINGSHOT))
     }
 }

@@ -1,3 +1,11 @@
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_COW: can_use(RG_EPONAS_SONG) and can_use(RG_FAIRY_SLINGSHOT)
+    }
+}
+
 # overworld/death_mountain_trail
 
 extend region RR_DMT_COW_GROTTO {

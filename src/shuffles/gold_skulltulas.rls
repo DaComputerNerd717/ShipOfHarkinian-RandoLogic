@@ -255,6 +255,42 @@ extend region RR_JABU_JABUS_BELLY_NEAR_BOSS_ROOM {
     }
 }
 
+extend region RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_GS_BOOMERANG_CHEST_ROOM: (can_use(RG_SONG_OF_TIME) and can_get_drop(RE_GOLD_SKULLTULA)) or (trick(RT_JABU_MQ_SOT_GS) and can_use(RG_BOOMERANG))
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_WEST {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_GS_TAILPASARAN_ROOM: has_explosives() and can_get_drop(RE_GOLD_SKULLTULA, ED_BOOMERANG)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_INVISIBLE_KEESE_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_GS_INVISIBLE_ENEMIES_ROOM: # firstly, we can just use FAs to clear the web and then longshot the skull
+                                                          can_use(RG_FIRE_ARROWS) and can_get_drop(RE_GOLD_SKULLTULA, ED_LONGSHOT) or
+                                                          # Otherwise, we have to cross the gap and kill the skull.
+                                                          ((can_get_drop(RE_GOLD_SKULLTULA, ED_BOOMERANG) or (is_adult() and can_ground_jumpslash())) and
+                                                          # We can cheese the gap with hovers
+                                                           ((can_use(RG_HOVER_BOOTS) or
+                                                          # Otherwise we have to kill the enemies to raise the platform. This persists so we can do it as the other age.
+                                                             any_age((trick(RT_LENS_JABU_MQ) or can_use(RG_LENS_OF_TRUTH)) and
+                                                                     can_kill(RE_STINGER, ED_BOOMERANG, false, 2, false, true) and 
+                                                                     # we can hit the keese farthest from the water with irons and hookshot, but we won't be able to see it while doing so
+                                                                     (can_kill(RE_KEESE, ED_LONGSHOT, false) or (trick(RT_LENS_JABU_MQ) and can_use(RG_HOOKSHOT) and can_use(RG_IRON_BOOTS)))))
+                                                          # If we kill the enemies, we then need to cross the water using the platform. Note that adult cannot do so while swimming because MQ jank.
+                                                            and ((is_child() and has(RG_BRONZE_SCALE)) or (is_adult() and can_use(RG_IRON_BOOTS)))))
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_GS_NEAR_BOSS: (has(RG_CLIMB) and (can_use(RG_BOOMERANG) or (trick(RT_JABU_NEAR_BOSS_RANGED) and can_use(RG_HOOKSHOT)))) or (trick(RT_JABU_NEAR_BOSS_RANGED) and can_use(RG_LONGSHOT))
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_RUPEE_BRIDGE_NORTH {

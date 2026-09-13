@@ -458,6 +458,40 @@ extend region RR_JABU_JABUS_BELLY_ABOVE_BIGOCTO {
     }
 }
 
+extend region RR_JABU_JABUS_BELLY_MQ_BEGINNING {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_ENTRANCE_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_MQ_ENTRANCE_POT_2: can_break_pots()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_UNDERWATER_ALCOVE {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_GEYSER_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_MQ_GEYSER_POT_2: can_break_pots()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_TIME_BLOCK_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_MQ_TIME_BLOCK_POT_2: can_break_pots()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_EAST {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_LIKE_LIKES_POT_1: can_break_pots()
+        RC_JABU_JABUS_BELLY_MQ_LIKE_LIKES_POT_2: can_break_pots()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_BEFORE_BOSS_POT_1: can_break_pots()
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_FOYER {

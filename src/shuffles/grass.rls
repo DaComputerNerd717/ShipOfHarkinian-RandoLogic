@@ -292,6 +292,62 @@ extend region RR_DODONGOS_CAVERN_MQ_BACK_SWITCH_GRAVE {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_MQ_BEGINNING {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_FIRST_GRASS_1: can_cut_shrubs()
+        RC_JABU_JABUS_BELLY_MQ_FIRST_GRASS_2: can_cut_shrubs()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_HOLES_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_PIT_GRASS_1: can_cut_shrubs() and has_explosives()
+        RC_JABU_JABUS_BELLY_MQ_PIT_GRASS_2: can_cut_shrubs() and has_explosives()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_HOLES_BASEMENT {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_BASEMENT_GRASS_1: can_cut_shrubs()
+        RC_JABU_JABUS_BELLY_MQ_BASEMENT_GRASS_2: can_cut_shrubs()
+        RC_JABU_JABUS_BELLY_MQ_BASEMENT_GRASS_3: can_cut_shrubs()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_WATER_SWITCH_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_BASEMENT_BOOMERANG_GRASS: can_cut_shrubs()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_FORK_NORTH_EAST {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_FALLING_LIKE_LIKE_GRASS: can_cut_shrubs()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_ABOVE_BIGOCTO {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_AFTER_BIG_OCTO_GRASS_1: can_cut_shrubs()
+        RC_JABU_JABUS_BELLY_MQ_AFTER_BIG_OCTO_GRASS_2: can_cut_shrubs()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_JIGGLIES_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_JIGGLIES_GRASS: can_cut_shrubs()
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_NEAR_BOSS_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_BEFORE_BOSS_GRASS_1: can_cut_shrubs()
+        RC_JABU_JABUS_BELLY_MQ_BEFORE_BOSS_GRASS_2: can_cut_shrubs()
+    }
+}
+
 # overworld/castle_grounds
 
 extend region RR_HC_MOAT {

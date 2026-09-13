@@ -237,6 +237,27 @@ extend region RR_ICE_CAVERN_MQ_COMPASS_ROOM {
     }
 }
 
+# dungeons/jabujabus_belly
+
+extend region RR_JABU_JABUS_BELLY_MQ_LIFT_ROOM {
+    locations {
+        RC_JABU_JABUS_BELLY_MQ_LIFT_HEART_1: always
+        RC_JABU_JABUS_BELLY_MQ_LIFT_HEART_2: always
+        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_1: can_use(RG_IRON_BOOTS)
+        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_2: can_use(RG_IRON_BOOTS)
+        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_3: can_use(RG_IRON_BOOTS)
+    }
+}
+
+extend region RR_JABU_JABUS_BELLY_MQ_UNDERWATER_ALCOVE {
+    locations {
+        # Getting the ones closest to the ledge with rang may be a trick due to the awkward angle without blind shooting through the flesh
+        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_1: has(RG_GOLDEN_SCALE) or can_use(RG_BOOMERANG)
+        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_2: has(RG_SILVER_SCALE) or can_use(RG_BOOMERANG)
+        RC_JABU_JABUS_BELLY_MQ_LIFT_RUPEE_3: has(RG_BRONZE_SCALE) or can_use(RG_BOOMERANG)
+    }
+}
+
 # dungeons/spirit_temple
 
 extend region RR_SPIRIT_TEMPLE_BIG_WALL_UPPER {
