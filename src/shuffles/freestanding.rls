@@ -408,6 +408,14 @@ extend region RR_KF_RUPEE_ALCOVE {
     }
 }
 
+# overworld/lon_lon_ranch
+
+extend region RR_LLR_TOWER {
+    locations {
+        RC_LLR_FREESTANDING_POH: is_child() and has(RG_POWER_BRACELET) and has(RG_CRAWL)
+    }
+}
+
 # overworld/zoras_fountain
 
 extend region RR_ZF_LAKEBED {
