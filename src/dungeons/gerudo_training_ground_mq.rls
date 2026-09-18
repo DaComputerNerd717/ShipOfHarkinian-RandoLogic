@@ -195,6 +195,15 @@ region RR_GERUDO_TRAINING_GROUND_MQ_TORCH_SIDE_PLATFORMS {
 	}
 }
 
+region RR_GERUDO_TRAINING_GROUND_MQ_UNDERWATER {
+    name: "Gerudo Training Ground MQ Underwater"
+    scene: SCENE_GERUDO_TRAINING_GROUND
+
+    exits {
+        RR_GERUDO_TRAINING_GROUND_MQ_PLATFORMS_UNLIT_TORCH: always
+    }
+}
+
 region RR_GERUDO_TRAINING_GROUND_MQ_MAZE_RIGHT {
 	name: "Gerudo Training Ground MQ Maze Right"
 	scene: SCENE_GERUDO_TRAINING_GROUND
