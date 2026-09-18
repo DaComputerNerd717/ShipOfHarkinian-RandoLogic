@@ -65,7 +65,9 @@ extend region RR_DODONGOS_CAVERN_MQ_POES_ROOM {
 # dungeons/gerudo_training_ground
 
 extend region RR_GERUDO_TRAINING_GROUND_MQ_MAZE_CENTER {
-	RC_GERUDO_TRAINING_GROUND_MQ_MAZE_CRATE: can_break_crates()
+    locations {
+        RC_GERUDO_TRAINING_GROUND_MQ_MAZE_CRATE: can_break_crates()
+    }
 }
 
 # dungeons/jabujabus_belly
