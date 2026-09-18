@@ -483,6 +483,12 @@ extend region RR_GERUDO_TRAINING_GROUND_MQ_MAZE_RIGHT {
 	}
 }
 
+extend region RR_GERUDO_TRAINING_GROUND_MQ_DINOLFOS_ROOM {
+    locations {
+        RC_GERUDO_TRAINING_GROUND_MQ_DINOLFOS_CHEST: (can_use(RG_MASTER_SWORD) or can_use(RG_BIGGORON_SWORD) or can_use(RG_MEGATON_HAMMER) or can_use(RG_FAIRY_BOW) or ((can_use(RG_NUTS) or can_use(RG_HOOKSHOT) or can_use(RG_BOOMERANG)) and (can_use(RG_KOKIRI_SWORD) or can_use(RG_FAIRY_SLINGSHOT)))) and has(RG_OPEN_CHEST)
+    }
+}
+
 # dungeons/ice_cavern
 
 extend region RR_ICE_CAVERN_MAP_ROOM {
