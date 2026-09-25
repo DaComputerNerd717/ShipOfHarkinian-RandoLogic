@@ -89,6 +89,15 @@ extend region RR_DESERT_COLOSSUS {
     }
 }
 
+
+# overworld/gerudo_valley
+
+extend region RR_GV_UPPER_STREAM {
+    locations {
+        RC_GV_GOSSIP_STONE: always
+    }
+}
+
 # overworld/goron_city
 
 extend region RR_GORON_CITY {
@@ -169,6 +178,22 @@ extend region RR_KF_OUTSIDE_LOST_WOODS {
 extend region RR_KF_STORMS_GROTTO {
     locations {
         RC_KF_STORMS_GROTTO_GOSSIP_STONE: always
+    }
+}
+
+# overworld/lake_hylia
+
+extend region RR_LAKE_HYLIA {
+    locations {
+        RC_LH_LAB_GOSSIP_STONE:       always
+        RC_LH_SOUTHEAST_GOSSIP_STONE: always
+        RC_LH_SOUTHWEST_GOSSIP_STONE: always
+    }
+}
+
+extend region RR_LH_FISHING_POND {
+    locations {
+        RC_FISHING_POLE_HINT: has(RG_SPEAK_HYLIAN)
     }
 }
 
