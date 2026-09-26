@@ -58,8 +58,8 @@ region RR_WATER_TEMPLE_MQ_MAIN {
         #Adult needs to jump in instead of dive for swim access, but you just hold forward. RT_WATER_BK_REGION Isn't relevant unless 
         #the Dark Link loop can be done without longshot with other tricks
         RR_WATER_TEMPLE_MQ_CRATE_VORTEX_ROOM:   flag(LOGIC_WATER_MQ_B1_SWITCH) and ((water_level(WL_LOW) and has(RG_BRONZE_SCALE)) or 
-                                                (can_use(RG_IRON_BOOTS) and water_timer() >= 16 and can_use(RG_HOOKSHOT) or has(RG_BRONZE_SCALE))) and (can_use(RG_LONGSHOT) or 
-                                                (trick(RT_WATER_BK_REGION) and can_use(RG_HOVER_BOOTS)))
+                                                (can_use(RG_IRON_BOOTS) and water_timer() >= 16 and can_use(RG_HOOKSHOT) or has(RG_BRONZE_SCALE))) and 
+                                                (can_use(RG_LONGSHOT) or (trick(RT_WATER_BK_REGION) and can_use(RG_HOVER_BOOTS)))
     }
 }
 
@@ -271,9 +271,11 @@ region RR_WATER_TEMPLE_MQ_PILLAR_1F {
     exits {
         RR_WATER_TEMPLE_MQ_MAIN:      always
         RR_WATER_TEMPLE_MQ_PILLAR_H:  water_level(WL_HIGH) and trick(RT_WATER_FW_CENTRAL_GS) and can_use(RG_FARORES_WIND) and has(RG_BRONZE_SCALE)
-        RR_WATER_TEMPLE_MQ_PILLAR_2F: can_use(RG_HOOKSHOT) or (water_level(WL_MID) and trick(RT_WATER_FW_CENTRAL_GS) and can_use(RG_FARORES_WIND) and has(RG_BRONZE_SCALE))
+        RR_WATER_TEMPLE_MQ_PILLAR_2F: can_use(RG_HOOKSHOT) or (water_level(WL_MID) and trick(RT_WATER_FW_CENTRAL_GS) and can_use(RG_FARORES_WIND) and 
+                                      has(RG_BRONZE_SCALE))
         #if the gate is open, you sink straight in, so you can't climb up this way in logic without swimming
-        RR_WATER_TEMPLE_MQ_PILLAR_B1: flag(LOGIC_WATER_MQ_B1_OPENED_PILLAR) and water_level(WL_HIGH_OR_MID) and trick(RT_WATER_FW_CENTRAL_GS) and can_use(RG_FARORES_WIND) and can_use(RG_IRON_BOOTS) and can_use(RG_ZORA_TUNIC)
+        RR_WATER_TEMPLE_MQ_PILLAR_B1: flag(LOGIC_WATER_MQ_B1_OPENED_PILLAR) and water_level(WL_HIGH_OR_MID) and trick(RT_WATER_FW_CENTRAL_GS) and 
+                                      can_use(RG_FARORES_WIND) and can_use(RG_IRON_BOOTS) and can_use(RG_ZORA_TUNIC)
     }
 }
 
@@ -320,7 +322,8 @@ region RR_WATER_TEMPLE_MQ_PILLAR_B1 {
     exits {
     #Can't know water level, so we'll just assume any possibility and skip to MAIN
         RR_WATER_TEMPLE_MQ_MAIN:            flag(LOGIC_WATER_MQ_B1_OPENED_PILLAR) and can_use(RG_IRON_BOOTS) and has(RG_BRONZE_SCALE)
-        #Child needs to release irons for height to push down the larger "peg", however they can push the lower one down by climbing and then hit the switch through the larger peg, but it's a trick
+        #Child needs to release irons for height to push down the larger "peg", however they can push the lower one down by climbing and then hit the switch 
+        #through the larger peg, but it's a trick
         RR_WATER_TEMPLE_MQ_PILLAR_B1_FINAL: ((is_adult() and can_use(RG_LONGSHOT)) or (can_use(RG_HOOKSHOT) and has(RG_BRONZE_SCALE)))
     }
 }
@@ -407,7 +410,7 @@ region RR_WATER_TEMPLE_MQ_OUTSIDE_WATERFALL {
         RR_WATER_TEMPLE_MQ_OUTSIDE_HIDDEN_SWITCH_2F: water_level(WL_MID)
         RR_WATER_TEMPLE_MQ_WATERFALL:                water_level(WL_HIGH) and small_keys(SCENE_WATER_TEMPLE, 1)
         RR_WATER_TEMPLE_MQ_3F_CENTRAL_H:             water_level(WL_HIGH) and (is_adult() or can_use(RG_HOVER_BOOTS) or can_use(RG_HOOKSHOT) or 
-                has(RG_BRONZE_SCALE))
+                                                     has(RG_BRONZE_SCALE))
         RR_WATER_TEMPLE_MQ_2F_CENTRAL_H:             water_level(WL_HIGH) and can_use(RG_HOOKSHOT) and can_use(RG_IRON_BOOTS)
     }
 }
@@ -449,7 +452,8 @@ region RR_WATER_TEMPLE_MQ_STALFOS_PIT_LOWER {
     scene: SCENE_WATER_TEMPLE
     
     events {
-        LOGIC_WATER_MQ_STALFOS_PIT: ((is_adult() and can_kill(RE_STALFOS, ED_CLOSE, true, 3, false, true)) or (can_use(RG_IRON_BOOTS) and can_use(RG_HOOKSHOT) and can_kill(RE_STALFOS, ED_BOMB_THROW, true, 3, false, true)))
+        LOGIC_WATER_MQ_STALFOS_PIT: ((is_adult() and can_kill(RE_STALFOS, ED_CLOSE, true, 3, false, true)) or (can_use(RG_IRON_BOOTS) and 
+                                    can_use(RG_HOOKSHOT) and can_kill(RE_STALFOS, ED_BOMB_THROW, true, 3, false, true)))
     }
     
     exits {
@@ -619,7 +623,8 @@ region RR_WATER_TEMPLE_MQ_B1_GATE_SWITCH {
     scene: SCENE_WATER_TEMPLE
     
     events {
-        #If the water is low, the switch is underwater and needs irons to press, otherwise, the water is too low to climb up and you need irons to hookshot a target
+        #If the water is low, the switch is underwater and needs irons to press, otherwise, the water is too low to climb up and you need irons to 
+        #hookshot a target
         #If a glitch clips through the gate on low, have it logically press the switch and let entrance logic enter
         LOGIC_WATER_MQ_B1_SWITCH: can_use(RG_IRON_BOOTS)
     }

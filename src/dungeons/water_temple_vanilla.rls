@@ -106,7 +106,7 @@ region RR_WATER_TEMPLE_2F_CENTRAL_H {
     scene: SCENE_WATER_TEMPLE
     
     exits {
-        RR_WATER_TEMPLE_MAIN: always
+        RR_WATER_TEMPLE_MAIN:           always
         #Implies CanAvoid(RE_STINGERS)
         RR_WATER_TEMPLE_JET_CHEST_ROOM: (can_use(RG_HOOKSHOT) or (trick(RT_WATER_IRON_BOOTS_LEDGE_GRAB) and has(RG_BRONZE_SCALE) and take_damage())) and 
                                         water_timer() >= 48
@@ -120,7 +120,7 @@ region RR_WATER_TEMPLE_2F_CENTRAL_LM {
     scene: SCENE_WATER_TEMPLE
     
     exits {
-        RR_WATER_TEMPLE_MAIN: always
+        RR_WATER_TEMPLE_MAIN:                always
         #Implies CanAvoid(RE_STINGERS)
         RR_WATER_TEMPLE_JET_CHEST_ROOM:      can_use(RG_HOOKSHOT)
         RR_WATER_TEMPLE_OUTSIDE_JET_LIFT_2F: water_level(WL_MID) and (is_adult() and can_use(RG_HOOKSHOT) or can_use(RG_HOVER_BOOTS) or has(RG_BRONZE_SCALE))
@@ -203,7 +203,7 @@ region RR_WATER_TEMPLE_TORCH_ROOM {
     
     exits {
         RR_WATER_TEMPLE_SIDE_TOWER_1F: ((water_level(WL_LOW) or can_use(RG_IRON_BOOTS)) and any_age(
-                (water_level(WL_LOW) and can_kill(RE_SHELL_BLADE, ED_CLOSE, true, 3)) or can_use(RG_HOOKSHOT)))
+                                       (water_level(WL_LOW) and can_kill(RE_SHELL_BLADE, ED_CLOSE, true, 3)) or can_use(RG_HOOKSHOT)))
     }
 }
 
@@ -307,7 +307,8 @@ region RR_WATER_TEMPLE_3_JETS_NO_SWITCH {
     scene: SCENE_WATER_TEMPLE
     
     exits {
-        RR_WATER_TEMPLE_3_JETS_SWITCH: can_use(RG_HOOKSHOT) or (trick(RT_HOVER_BOOST_SIMPLE) and can_use(RG_HOVER_BOOTS) and can_use(RG_MEGATON_HAMMER) and can_standing_shield())
+        RR_WATER_TEMPLE_3_JETS_SWITCH: can_use(RG_HOOKSHOT) or (trick(RT_HOVER_BOOST_SIMPLE) and can_use(RG_HOVER_BOOTS) and 
+                                       can_use(RG_MEGATON_HAMMER) and can_standing_shield())
         RR_WATER_TEMPLE_CANAL_ALCOVE:  always
     }
 }
@@ -330,7 +331,8 @@ region RR_WATER_TEMPLE_BOULDER_CANAL {
     exits {
         #making the jump as adult without jumpslash is possible, but hard enough to be a trick
         RR_WATER_TEMPLE_BOULDERS_SOUTH: has(RG_BRONZE_SCALE) or (is_adult() and (can_jumpslash() or can_use(RG_HOVER_BOOTS)))
-        RR_WATER_TEMPLE_BOULDERS_NORTH: has(RG_BRONZE_SCALE) or (trick(RT_WATER_INVISIBLE_HOOKSHOT_TARGET) and can_use(is_adult() ? RG_HOOKSHOT : RG_LONGSHOT) and can_use(RG_IRON_BOOTS) and water_timer() >= 8)
+        RR_WATER_TEMPLE_BOULDERS_NORTH: has(RG_BRONZE_SCALE) or (trick(RT_WATER_INVISIBLE_HOOKSHOT_TARGET) and 
+                                        can_use(is_adult() ? RG_HOOKSHOT : RG_LONGSHOT) and can_use(RG_IRON_BOOTS) and water_timer() >= 8)
         RR_WATER_TEMPLE_CANAL_ALCOVE:   is_adult()
         RR_WATER_TEMPLE_BEHIND_CANAL:   can_use(RG_IRON_BOOTS) and has(RG_BRONZE_SCALE) and water_timer() >= 8
     }
