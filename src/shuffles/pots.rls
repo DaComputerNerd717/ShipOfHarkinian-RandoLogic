@@ -696,9 +696,9 @@ extend region RR_WATER_TEMPLE_BLOCK_ROOM {
         #we can always get the pots by shooting them from afar and diving for the item...
         RC_WATER_TEMPLE_BASEMENT_BLOCK_PUZZLE_POT_1: (can_break_pots(ED_LONGSHOT, true, true) and has(RG_BRONZE_SCALE)) or
         #or we can use irons and hookshot the pot, hookshoting to the target door if needed to cross the gap
-                (can_use(RG_IRON_BOOTS) and can_use(RG_HOOKSHOT) and water_timer() >= 8)
+                                                     (can_use(RG_IRON_BOOTS) and can_use(RG_HOOKSHOT) and water_timer() >= 8)
         RC_WATER_TEMPLE_BASEMENT_BLOCK_PUZZLE_POT_2: (can_break_pots(ED_LONGSHOT, true, true) and has(RG_BRONZE_SCALE)) or
-                (can_use(RG_IRON_BOOTS) and can_use(RG_HOOKSHOT) and water_timer() >= 8)
+                                                     (can_use(RG_IRON_BOOTS) and can_use(RG_HOOKSHOT) and water_timer() >= 8)
     }
 }
 

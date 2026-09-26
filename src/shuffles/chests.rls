@@ -859,7 +859,7 @@ extend region RR_WATER_TEMPLE_CRACKED_WALL {
 extend region RR_WATER_TEMPLE_TORCH_ROOM {
     locations {
         RC_WATER_TEMPLE_TORCHES_CHEST: any_age((water_level(WL_LOW) and can_kill(RE_SHELL_BLADE, ED_CLOSE, true, 3) and has(RG_OPEN_CHEST)) or
-                can_open_underwater_chest())
+                                       can_open_underwater_chest())
     }
 }
 
@@ -872,9 +872,9 @@ extend region RR_WATER_TEMPLE_BOSS_KEY_ROOM {
 extend region RR_WATER_TEMPLE_DRAGON_ROOM {
     locations {
         RC_WATER_TEMPLE_DRAGON_CHEST: has(RG_BRONZE_SCALE) and has(RG_OPEN_CHEST) and
-                ((can_use(RG_HOOKSHOT) and can_use(RG_IRON_BOOTS)) or
-                (((is_adult() and trick(RT_WATER_ADULT_DRAGON)) or (is_child() and trick(RT_WATER_CHILD_DRAGON))) and
-                can_hit_switch(ED_BOOMERANG, true) and (has(RG_SILVER_SCALE) or (can_use(RG_IRON_BOOTS) and water_timer() >= 8))))
+                                      ((can_use(RG_HOOKSHOT) and can_use(RG_IRON_BOOTS)) or
+                                      (((is_adult() and trick(RT_WATER_ADULT_DRAGON)) or (is_child() and trick(RT_WATER_CHILD_DRAGON))) and
+                                      can_hit_switch(ED_BOOMERANG, true) and (has(RG_SILVER_SCALE) or (can_use(RG_IRON_BOOTS) and water_timer() >= 8))))
     }
 }
 
@@ -904,10 +904,10 @@ extend region RR_WATER_TEMPLE_SOT_PIT_ROOM {
 
 extend region RR_WATER_TEMPLE_ABOVE_DRAGON {
     locations {
-        RC_WATER_TEMPLE_RIVER_CHEST: has(RG_OPEN_CHEST)
+        RC_WATER_TEMPLE_RIVER_CHEST:  has(RG_OPEN_CHEST)
         RC_WATER_TEMPLE_DRAGON_CHEST: is_adult() and can_hit_switch(ED_LONGSHOT) and has(RG_BRONZE_SCALE) and has(RG_OPEN_CHEST) and
-                ((trick(RT_WATER_ADULT_DRAGON) and (has(RG_SILVER_SCALE) or (can_use(RG_IRON_BOOTS) and water_timer() >= 8))) or
-                trick(RT_WATER_DRAGON_JUMP_DIVE))
+                                      ((trick(RT_WATER_ADULT_DRAGON) and (has(RG_SILVER_SCALE) or (can_use(RG_IRON_BOOTS) and water_timer() >= 8))) or
+                                      trick(RT_WATER_DRAGON_JUMP_DIVE))
     }
 }
 

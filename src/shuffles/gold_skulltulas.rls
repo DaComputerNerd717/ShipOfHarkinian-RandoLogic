@@ -396,9 +396,9 @@ extend region RR_WATER_TEMPLE_CANAL_ALCOVE {
     locations {
         RC_WATER_TEMPLE_GS_NEAR_BOSS_KEY_CHEST: can_get_drop(RE_GOLD_SKULLTULA, ED_BOOMERANG) or
         #child can also do a hovers backwalk backflip to reach the token after killing the skull
-                (((is_adult() and can_use(RG_HOVER_BOOTS)) or can_middair_ground_jump()) and
+                                                (((is_adult() and can_use(RG_HOVER_BOOTS)) or can_middair_ground_jump()) and
         #killing with bombchu from here is hard due to the terrain, but adult can do it much easier from the river so it's only relevant for child
-                can_kill(RE_GOLD_SKULLTULA, has(RG_BRONZE_SCALE) and is_adult() ? ED_SHORT_JUMPSLASH : ED_BOOMERANG))
+                                                can_kill(RE_GOLD_SKULLTULA, has(RG_BRONZE_SCALE) and is_adult() ? ED_SHORT_JUMPSLASH : ED_BOOMERANG))
     }
 }
 
@@ -458,7 +458,7 @@ extend region RR_WATER_TEMPLE_MQ_HIDDEN_SWITCH_3F {
     locations {
         #Boxes can kill Gold Skulltulas.
         RC_WATER_TEMPLE_MQ_GS_BEFORE_UPPER_WATER_SWITCH: (can_break_crates() and has(RG_POWER_BRACELET)) or
-                                                                    ((can_break_crates() or trick(RT_VISIBLE_COLLISION)) and can_kill(RE_GOLD_SKULLTULA))
+                                                         ((can_break_crates() or trick(RT_VISIBLE_COLLISION)) and can_kill(RE_GOLD_SKULLTULA))
     }
 }
 
