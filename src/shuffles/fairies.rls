@@ -34,6 +34,20 @@ extend region RR_DODONGOS_CAVERN_MQ_GOSSIP_STONE {
     }
 }
 
+# dungeons/fire_temple
+
+extend region RR_FIRE_TEMPLE_MQ_LOOP_HEXAGON_ROOM {
+    locations {
+        RC_FIRE_TEMPLE_MQ_LOOP_STALFOS_SUN_FAIRY: can_use(RG_SUNS_SONG)
+    }
+}
+
+extend region RR_FIRE_TEMPLE_MQ_LOOP_5_TILE_ROOM {
+    locations {
+        RC_FIRE_TEMPLE_MQ_LOOP_KNUCKLE_SUN_FAIRY: can_use(RG_SUNS_SONG)
+    }
+}
+
 # dungeons/ganons_castle
 
 extend region RR_GANONS_CASTLE_DEKU_SCRUBS {
